@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>Portfolio</h2>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<section class="hero">
+    <img src="{% static 'images/profile.png' %}" 
+         alt="Profile Picture" 
+         class="profile-pic">
+
+    <h1>{{ name }}</h1>
+    <p>{{ title }}</p>
+    <a href="#contact" class="btn">Contact Me</a>
+</section>
+
+
+<section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+        I am a passionate Data Science student who enjoys working with data,
+        building machine learning models, and extracting meaningful insights.
+        I focus on solving real-world problems using Python and modern data tools.
+    </p>
+</section>
+
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        
+        {% for item in skills %}
+        <div class="skill">{{ item.skill }}</div>
+
+        {% endfor %}
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-container">
+
+        <div class="project-card">
+            <h3>House Price Prediction</h3>
+            <p>Built a regression model using Scikit-learn to predict housing prices with high accuracy.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Customer Churn Analysis</h3>
+            <p>Performed data analysis and built classification models to identify customer churn patterns.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Sales Dashboard</h3>
+            <p>Designed an interactive Power BI dashboard to analyze business sales performance.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: {{ email }}</p>
+    <a href="{{ linkedin }}" target="_blank">LinkedIn</a>
+    <a href="{{ github }}" target="_blank">GitHub</a>
+</section>
+
+<footer>
+    © 2026 {{ name }} | Data Science Portfolio
+</footer>
+
+</body>
+</html>

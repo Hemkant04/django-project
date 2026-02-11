@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS for a clean, modern look */
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 40px; }
+        .card { background: white; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; }
+       
+        /* Header Styling */
+        .header { background: #05826d; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { margin: 0; font-size: 1.5rem; }
+        .date { font-size: 0.8rem; opacity: 0.8; }
+
+        /* Table Styling */
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 15px; background: #ecf0f1; color: #7f8c8d; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        td { padding: 15px; border-bottom: 1px solid #eee; color: #333; }
+        tr:last-child td { border-bottom: none; }
+       
+        /* Priority Badge Logic */
+        .badge { padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; color: white; }
+        .p-Active { background-color: green; }   /* Red */
+        .p-OnLeave { background-color: #e74c3c; color: white; } /* Yellow */
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Information</h1>
+        <p>Welcome to the employee portal.</p>
+
+
+    </div>
+   
+    <form action="{% url 'add_employee' %}" method="POST">
+    {% csrf_token %}
+
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+  <div>
+        <a href="{% url 'home' %}"> Back to Home</a>
+    </div>
+
+</body>
+</html>
