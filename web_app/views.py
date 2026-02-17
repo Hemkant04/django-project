@@ -104,3 +104,64 @@ def portfolio(request):
         ]
     }
     return render(request, "web_app/portfolio.html", context)
+
+
+import requests
+
+
+def portfolio2(request):
+        github_username = "Hemkant04"
+
+        # Repos you want to show (your pinned repos)
+        pinned_repo_names = [
+            "Event-Management-WebApp",
+            "django-project",
+            "Wordle",
+        ]
+
+        url = f"https://api.github.com/users/{github_username}/repos"
+
+        response = requests.get(url)
+        repos_data = response.json()
+
+        pinned_repos = []
+
+        for repo in repos_data:
+            if repo["name"] in pinned_repo_names:
+                pinned_repos.append({
+                    "name": repo["name"],
+                    "description": repo["description"],
+                    "url": repo["html_url"],
+                    "stars": repo["stargazers_count"],
+                    "language": repo["language"]
+                })
+
+
+
+
+
+        context = {
+            "name": "Hemkant Sah",
+            "About_Me":"I am a passionate Data Science student who enjoys working with data, building machine learning models, and extracting meaningful insights. I focus on solving real-world problems using Python and modern data tools.",
+            "email": "hemkanta04@gmail.com",
+            "linkedin": "https://www.linkedin.com/in/hemkantsah01/",
+            "github": "https://github.com/hemkant04",
+
+            "skills" : [
+                {"skill": "Programming: Python, SQL, JavaScript, HTML/CSS"},
+                {"skill": "Data Science: Machine Learning, Statistical Analysis, EDA"},
+                {"skill": "Libraries/Frameworks: Pandas, NumPy, Scikit-learn, Django, FastAPI"},
+                {"skill": "Tools: Git, Jupyter, VS Code, Docker"},
+                {"skill": "Soft Skills: Communication, Problem Solving, Teamwork, Leadership"}
+                
+            ],
+             "repos": pinned_repos
+             }
+        return render(request, "web_app/portfolio2.html", context)
+
+
+
+
+def resume(request):
+
+    return render(request, "web_app/resume.html")

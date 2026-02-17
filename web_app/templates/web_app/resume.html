@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemkant Sah - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, 'Helvetica Neue', sans-serif;
+            background: #f5f5f5;
+            color: #000;
+            line-height: 1.4;
+        }
+
+        .no-print {
+            padding: 1rem;
+        }
+
+        .download-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #000;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .download-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-content {
+            padding: 40px 50px;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            font-size: 11px;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #000;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 3px;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Summary */
+        .summary-text {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #000;
+            margin-bottom: 6px;
+        }
+
+        /* Experience Item */
+        .experience-item {
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+
+        .job-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .job-date {
+            font-size: 11px;
+            color: #000;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .company-name {
+            font-size: 11px;
+            font-weight: 400;
+            color: #000;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .experience-item ul {
+            margin-left: 16px;
+            margin-top: 4px;
+        }
+
+        .experience-item li {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #000;
+            margin-bottom: 3px;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .degree-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .school-info {
+            font-size: 11px;
+            color: #000;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+        }
+
+        .skill-item {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #000;
+        }
+
+        .skill-item strong {
+            font-weight: 700;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .cert-list li {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .cert-list li:before {
+            content: "• ";
+            margin-right: 6px;
+        }
+
+        /* Recommendation */
+        .recommendation {
+            margin-top: 6px;
+        }
+
+        .recommendation-text {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #000;
+            font-style: normal;
+        }
+
+        .recommendation-text strong {
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: letter;
+                margin: 0.5in;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .no-print {
+                padding: 0;
+            }
+
+            .download-button {
+                display: none !important;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .resume-content {
+                padding: 0;
+            }
+
+            .section-title {
+                page-break-after: avoid;
+            }
+
+            .experience-item,
+            .education-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .no-print {
+                padding: 0.5rem;
+            }
+
+            .resume-content {
+                padding: 25px 20px;
+            }
+
+            .name {
+                font-size: 20px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-date {
+                margin-left: 0;
+                margin-top: 2px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-button {
+                position: static;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <!-- Download Button -->
+        <button class="download-button" onclick="window.print()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download as PDF
+        </button>
+
+        <div class="resume-container">
+            <div class="resume-content">
+                <!-- Header -->
+                <header class="header">
+                    <h1 class="name">Hemkant Sah</h1>
+                    <div class="contact-info">
+                        Dhapakhel, Lalitpur Nepal | hemkanta04@gmail.com | linkedin.com/in/hemkantsah01
+                    </div>
+                </header>
+
+                <!-- Professional Summary -->
+                <section>
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="summary-text">
+                        AI enthusiast and aspiring Data Scientist with a strong foundation in Python, data analysis, and machine learning. Experienced in transforming raw data into meaningful insights through hands-on projects. Proficient in data manipulation, statistical analysis, feature engineering, and predictive modeling with proven ability to build intelligent, data-powered solutions.
+                    </p>
+                </section>
+
+                <!-- Professional Experience -->
+                <section>
+                    <h2 class="section-title">Work Experience</h2>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Data Science Intern</h3>
+                            <span class="job-date">July 2025 - January 2026</span>
+                        </div>
+                        <div class="company-name">CodeAlpha | Remote</div>
+                        <ul>
+                            <li>Performed end-to-end data analysis workflows including data collection, cleaning, preprocessing, EDA, feature engineering, and visualization</li>
+                            <li>Applied statistical methods and ML techniques to extract insights, build predictive models with 85%+ accuracy, and evaluate results</li>
+                            <li>Developed automated data pipelines using Python and Pandas, reducing processing time by 40%</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Data Analysis Associate Intern</h3>
+                            <span class="job-date">July 2025 - October 2025</span>
+                        </div>
+                        <div class="company-name">Excelerate | Remote</div>
+                        <ul>
+                            <li>Conducted comprehensive data analysis and created visualizations to communicate insights to stakeholders</li>
+                            <li>Built and evaluated machine learning models using Scikit-learn, achieving performance improvements of 25%</li>
+                            <li>Collaborated with cross-functional teams to identify data requirements and deliver actionable recommendations</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Data Science Fellow</h3>
+                            <span class="job-date">February 2025 - July 2025</span>
+                        </div>
+                        <div class="company-name">Sunway College Kathmandu | Kathmandu, Nepal</div>
+                        <ul>
+                            <li>Executed full data science lifecycle from data collection to model deployment and evaluation</li>
+                            <li>Developed ML models to solve business problems, optimizing outcomes through iterative testing</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="job-title">Documentation Officer</h3>
+                            <span class="job-date">April 2022 - April 2023</span>
+                        </div>
+                        <div class="company-name">Guru Education & Visa Services | Kathmandu, Nepal</div>
+                        <ul>
+                            <li>Managed documentation processes for student visa applications ensuring compliance with regulatory requirements</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section>
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="education-item">
+                        <div class="degree-title">Bachelor of  Engineering | Graduated November 2024</div>
+                        <div class="school-info">Tribhuvan University, Kantipur Engineering College</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="degree-title">Data Science Intenship | November 2025 - Present</div>
+                        <div class="school-info">Tech Axis</div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section>
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item"><strong>Programming:</strong> Python, SQL, JavaScript, HTML/CSS</div>
+                        <div class="skill-item"><strong>Data Science:</strong> Machine Learning, Statistical Analysis, EDA</div>
+                        <div class="skill-item"><strong>Libraries/Frameworks:</strong> Pandas, NumPy, Scikit-learn, Django, FastAPI</div>
+                        <div class="skill-item"><strong>Visualization:</strong> Matplotlib, Seaborn, Plotly</div>
+                        <div class="skill-item"><strong>Tools:</strong> Git, Jupyter, VS Code, Docker</div>
+                        <div class="skill-item"><strong>Soft Skills:</strong> Communication, Problem Solving, Teamwork, Leadership</div>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section>
+                    <h2 class="section-title">Certifications</h2>
+                    <ul class="cert-list">
+                        <li>Nobel Fundamentals - Nobel Learning PBC</li>
+                        <li>GitHub Foundation - DataCamp</li>
+                        <li>Introduction to Data Science - Cisco Networking Academy</li>
+                        <li>HP LIFE Data Science & Analytics - HP LIFE</li>
+                        <li>Python for Data Science</li>
+                    </ul>
+                </section>
+
+                <!-- Recommendation -->
+                <section>
+                    <h2 class="section-title">Recommendation</h2>
+                    <div class="recommendation">
+                        <p class="recommendation-text">
+                            <strong>Suraj kumar Sah:</strong> "Mr. Hemkant Sah is a dedicated BCA student at Tribhuvan University with a strong interest in the IT field. He has developed practical skills in web development, data science, and machine learning. Narayan is proficient in tools such as HTML, CSS, JavaScript, Python, and SQL, and has experience with frameworks like Django and libraries like Scikit-learn. He is a fast learner, enthusiastic about technology, and consistently demonstrates a proactive approach to problem-solving. With his growing expertise and commitment to the field, Narayan shows great potential as a future IT professional."
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
